@@ -17,6 +17,7 @@ export const getPosts = (req, res) => {
     LEFT JOIN relationships AS r ON (p.userId = r.followedUserId) WHERE r.followerUserId= ? OR p.userId =?
     ORDER BY p.createdAt DESC`;
 
+    
     const values =
       userId !== "undefined" ? [userId] : [userInfo.id, userInfo.id];
 
@@ -26,8 +27,6 @@ export const getPosts = (req, res) => {
     });
   });
 };
-
-
 
 export const addPost = (req, res) => {
   const token = req.cookies.accessToken;
